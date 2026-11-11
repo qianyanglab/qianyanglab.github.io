@@ -1,0 +1,92 @@
+{{ define "main" }}
+{{ $projects := hugo.Data.projects }}
+{{ $papers := hugo.Data.papers }}
+{{ $lenses := hugo.Data.lenses }}
+<div class="wrap page-head">
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}<div class="lede prose">{{ . }}</div>{{ end }}
+</div>
+
+<div class="wrap lens-bar">
+  <p class="lens-label" id="lens-label">Group the projects by</p>
+  <div class="lens-buttons" role="group" aria-labelledby="lens-label">
+    {{ range $i, $l := $lenses }}
+    <button type="button" class="lens" data-lens="{{ $l.id }}" aria-pressed="{{ if eq $i 0 }}true{{ else }}false{{ end }}">{{ $l.label }}</button>
+    {{ end }}
+    <a class="lens lens-link" href="{{ site.Params.scholar }}">Full list of papers on Google Scholar <span aria-hidden="true">↗</span></a>
+  </div>
+</div>
+
+{{/* Every grouping is built here; the first shows by default (and without JavaScript). */}}
+{{ range $i, $l := $lenses }}
+{{ $key := $l.key }}
+<div class="wrap board" id="board-{{ $l.id }}" data-lens="{{ $l.id }}"{{ if $i }} hidden{{ end }}>
+  {{ range $g := $l.groups }}
+    {{ $cards := slice }}
+    {{ if $g.cards }}
+      {{/* This folder recombines papers into its own cards (see lenses.yaml). */}}
+      {{ range $c := $g.cards }}
+        {{ $mine := slice }}
+        {{ range $papers }}{{ if intersect (index . $key | default slice) (slice $c.id) }}{{ $mine = $mine | append . }}{{ end }}{{ end }}
+        {{ with $mine }}{{ $cards = $cards | append (dict "lens" $l.id "p" $c "papers" (sort . "year" "desc")) }}{{ end }}
+      {{ end }}
+    {{ else }}
+      {{/* Project cards, in this folder's `order` first, then the usual order. */}}
+      {{ $plist := slice }}
+      {{ range $g.order }}{{ range where $projects "id" . }}{{ $plist = $plist | append . }}{{ end }}{{ end }}
+      {{ range $projects }}{{ if not (in ($g.order | default slice) .id) }}{{ if not (in ($g.hide | default slice) .id) }}{{ $plist = $plist | append . }}{{ end }}{{ end }}{{ end }}
+      {{ range $p := $plist }}
+        {{ $mine := slice }}
+        {{ range $papers }}{{ if and (in (slice | append .project) $p.id) (intersect (index . $key | default slice) (slice $g.id)) }}{{ $mine = $mine | append . }}{{ end }}{{ end }}
+        {{ with $mine }}
+          {{ $shown := $p }}{{ with index ($g.titles | default dict) $p.id }}{{ $shown = merge $shown (dict "title" .) }}{{ end }}
+          {{ with index ($g.summaries | default dict) $p.id }}{{ $shown = merge $shown (dict "summary" .) }}{{ end }}
+          {{ $cards = $cards | append (dict "lens" $l.id "p" $shown "papers" (sort . "year" "desc")) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ with $cards }}
+    <section class="group group-{{ if eq $l.id "idea" }}{{ $g.id }}{{ else }}plain{{ end }}" id="group-{{ $g.id }}">
+      <h2 class="group-title">{{ $g.label }}</h2>
+      {{ if eq $l.id "idea" }}{{ range where hugo.Data.themes "id" $g.id }}<p class="group-blurb">{{ .blurb }}</p>{{ end }}{{ end }}
+      <div class="cards">{{ range . }}{{ partial "card.html" . }}{{ end }}</div>
+    </section>
+    {{ end }}
+  {{ end }}
+  <section class="group group-plain group-other" id="group-{{ $l.id }}-other">
+    <h2 class="group-title">Other</h2>
+    {{ $others := slice }}{{ range $lenses }}{{ if ne .id $l.id }}{{ $others = $others | append .label }}{{ end }}{{ end }}
+    <p class="other-note">See additional projects under {{ delimit $others " and " }}.</p>
+    <p><a class="button" href="{{ site.Params.scholar }}">Full list of papers on Google Scholar <span aria-hidden="true">↗</span></a></p>
+  </section>
+</div>
+{{ end }}
+
+<div class="wrap collaborators">
+  <h2 class="section-title">Collaborators</h2>
+  {{- $c := hugo.Data.collaborators }}
+  {{- $people := sort $c.people "sort" }}
+  <p>{{ $c.intro }}
+  {{- range $i, $e := $people }}{{ if $i }},{{ end }} {{ range $k, $n := $e.names }}{{ if $k }} and {{ end }}{{ if $n.url }}<a href="{{ $n.url }}">{{ $n.name }}</a>{{ else }}{{ $n.name }}{{ end }}{{ end }} ({{ $e.org | markdownify }}){{ end }}
+  {{- with $c.labs }}, and teams at {{ delimit . ", " " and " }}{{ end }}.</p>
+</div>
+
+<div class="wrap support">
+  <h2 class="section-title">Support</h2>
+  <p>{{ .Params.support }}</p>
+</div>
+
+<dialog class="card-dialog" id="card-dialog" aria-labelledby="dialog-title">
+  <div class="dialog-inner">
+    <button type="button" class="dialog-close" aria-label="Close">×</button>
+    <div class="dialog-figure"></div>
+    <h2 id="dialog-title" class="dialog-title"></h2>
+    <div class="dialog-body"></div>
+  </div>
+</dialog>
+{{ end }}
+
+{{ define "scripts" }}
+{{ $js := resources.Get "js/research.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer></script>
+{{ end }}

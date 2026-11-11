@@ -1,0 +1,22 @@
+# Materials and Megabytes. Sections are shown in this order; episodes within a section in order.
+# The full archive is on Buzzsprout; list only a few episodes from earlier seasons here, oldest first.
+# A section with `upcoming: true` lists guests without links. `intro` (optional) shows a line under a section title.
+# note: optional short line shown under an episode (e.g. the paper discussed).
+site: "https://materials-and-megabytes.buzzsprout.com"
+apple: "https://podcasts.apple.com/us/podcast/materials-and-megabytes/id1450783563"
+rss: "https://feeds.buzzsprout.com/190021.rss"
+
+seasons:
+  - title: "Season 4: In production"
+    upcoming: true
+    episodes:
+      - { title: "Evan Antoniuk", affiliation: "Lawrence Livermore National Laboratory" }
+      - { title: "Basita Das", affiliation: "AMOLF" }
+      - { title: "Jie Xu", affiliation: "University of Chicago and Argonne National Laboratory" }
+  - title: "Seasons 1–3: Selected episodes"
+    intro: "Full episode list on Buzzsprout and Apple Podcasts."
+    episodes:
+      - { label: "S1 E3", title: "Professor Evan J. Reed", affiliation: "Stanford University", note: "In memory", url: "https://materials-and-megabytes.buzzsprout.com/190021/episodes/744752-evan-j-reed-season-1-ep-3" }
+      - { label: "S2 E1", title: "Professor Gábor Csányi", affiliation: "University of Cambridge", url: "https://materials-and-megabytes.buzzsprout.com/190021/episodes/932510-gabor-csanyi-season-2-ep-1" }
+      - { label: "S2 E2", title: "Professor O. Anatole von Lilienfeld", affiliation: "University of Basel", url: "https://materials-and-megabytes.buzzsprout.com/190021/episodes/932717-o-anatole-von-lilienfeld-season-2-ep-2" }
+      - { label: "S3 E2", title: "Professor Heather Kulik", affiliation: "Massachusetts Institute of Technology", note: "Learning from failure: predicting electronic structure calculation outcomes with machine learning models", url: "https://materials-and-megabytes.buzzsprout.com/190021/episodes/2469740-paper-interview-learning-from-failure-predicting-electronic-structure-calculation-outcomes-with-machine-learning-models" }

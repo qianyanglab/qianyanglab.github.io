@@ -1,0 +1,55 @@
+{{/* One project card in one folder. Context: dict "lens" (the grouping id), "p" (a project from data/projects.yaml) and
+     "papers" (its papers from data/papers.yaml that belong in this folder). */}}
+{{ $p := .p }}{{ $papers := .papers }}
+{{/* Figure: the card's own, if it sets one, else the first of its papers that has one. */}}
+{{ $fig := false }}{{ if $p.image }}{{ $fig = $p }}{{ else }}{{ range first 1 (where $papers "image" "!=" nil) }}{{ $fig = . }}{{ end }}{{ end }}
+{{ $src := slice }}{{ range $papers }}{{ $src = $src | append (.source | default slice) }}{{ end }}
+<article class="card theme-{{ $p.theme }}" data-id="{{ $p.id }}">
+  <details>
+    <summary>
+      <span class="card-figure">
+        {{ with $fig }}
+          <img src="{{ .image | relURL }}" alt="" loading="lazy"{{ with .image_position }} style="--fig-pos: {{ . }}"{{ end }}{{ if eq .image_fit "contain" }} class="fit-contain"{{ end }}>
+        {{ else }}
+          {{/* Generated pattern, unique per project, when none of the papers shown has a figure. */}}
+          {{ $h1 := hash.FNV32a $p.id }}{{ $h2 := hash.FNV32a (printf "%s/b" $p.id) }}
+          {{ $round := eq $p.theme "knowing" }}
+          <svg class="pattern" viewBox="0 0 111 66" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            {{ range $i := seq 0 39 }}
+              {{ $col := mod $i 10 }}{{ $row := div $i 10 }}
+              {{ $h := cond (lt $i 20) $h1 $h2 }}{{ $k := mod $i 20 }}
+              {{ $bit := mod (div $h (math.Pow 2 $k | int)) 3 }}
+              {{ $x := add 7 (mul $col 10) }}{{ $y := add 9 (mul $row 14) }}
+              {{ $fill := "var(--card-a)" }}{{ $r := cond $round 4 1.5 }}
+              {{ if eq $bit 0 }}
+                <rect x="{{ $x }}" y="{{ $y }}" width="7" height="7" rx="{{ $r }}" fill="{{ $fill }}"/>
+              {{ else }}
+                <rect x="{{ add $x 0.5 }}" y="{{ add $y 0.5 }}" width="6" height="6" rx="{{ $r }}" fill="none" stroke="{{ $fill }}" stroke-opacity=".4" stroke-width=".8" stroke-dasharray="1.6 1.3"/>
+              {{ end }}
+            {{ end }}
+          </svg>
+        {{ end }}
+      </span>
+      <span class="card-head">
+        <span class="card-title">{{ $p.title }}</span>
+        {{ if eq .lens "domain" }}
+        <span class="card-data">
+          {{ if in $src "simulation" }}<span class="data-sim">Simulation</span>{{ end }}
+          {{ if in $src "experiment" }}<span class="data-exp">Experiment</span>{{ end }}
+        </span>
+        {{ end }}
+      </span>
+    </summary>
+    <div class="card-body">
+      <p class="card-summary">{{ $p.summary | markdownify }}</p>
+      {{ with $fig }}{{ with .image_credit }}<p class="card-credit">{{ . }}</p>{{ end }}{{ end }}
+      {{ with $papers }}
+      <ul class="card-papers">
+        {{ range . }}<li>{{ if .url }}<a href="{{ if strings.HasPrefix .url "http" }}{{ .url }}{{ else }}{{ .url | relURL }}{{ end }}">{{ .label | markdownify }}</a>{{ else }}{{ .label | markdownify }}{{ end }}{{ if .code }} <a class="button button-sm button-code" href="{{ .code }}">{{ .code_label | default "Code" }}</a>{{ end }}{{ with .note }}<span class="paper-note">{{ . }}</span>{{ end }}</li>{{ end }}
+      </ul>
+      {{ end }}
+      {{ with $p.related }}<p class="card-related">{{ $p.related_label | default "Related" }}: {{ range $i, $r := . }}{{ if $i }} · {{ end }}<a href="{{ $r.url | relURL }}">{{ $r.label }}</a>{{ end }}</p>{{ end }}
+      {{ with $p.code }}<p class="card-code"><a class="button button-sm" href="{{ . }}">{{ $p.code_label | default "Code" }}</a></p>{{ end }}
+    </div>
+  </details>
+</article>

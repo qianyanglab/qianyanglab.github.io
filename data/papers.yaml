@@ -1,0 +1,273 @@
+# Papers on the Research page, one entry per paper, grouped by project. Cards list papers newest first
+# (by `year`; papers from the same year keep the order they have here, so list the newer one first).
+# Each paper sits on its project's card (data/projects.yaml), and on any folder card in data/lenses.yaml
+# whose id it is tagged with. Its tags decide which groupings show it: in each grouping, a card shows only
+# its papers tagged for that group.
+#
+#   project         id of the card in data/projects.yaml, or a list of ids to show the paper on several cards;
+#                   leave it out for a paper that appears only on folder cards defined in data/lenses.yaml
+#   year            publication year (sets the order on the card, newest first)
+#   label           short citation shown as the link: "First author et al., *Journal* (year)";
+#                   "A & B" for two authors; *asterisks* set the journal in italics
+#   url             link to the paper ("" shows the label without a link)
+#   code            optional GitHub URL; adds a Code button next to the paper
+#   code_label      optional text for that button instead of "Code", e.g. "Data"
+#   note            optional short line under the paper
+#   idea            folders under "Three Key Ideas", given as card ids from data/lenses.yaml:
+#                   sys-reduction, sys-gnn (systems); pred-hierarchical, pred-change (predictions);
+#                   know-extrapolation, know-uq (knowing when it works); [] = not shown there
+#   domain          folders under "Applications": characterization and catalysis (project cards), plus the
+#                   card ids from data/lenses.yaml: sdl-structure-property, sdl-inverse-analysis,
+#                   sdl-active-learning (self-driving labs); energy-eutectic, energy-battery, energy-zintl
+#                   (energy materials); mfg-3d-printing (manufacturing);
+#                   bio-vision, bio-structure (biomedical engineering); phys-dynamics, phys-conservation
+#                   (physics)
+#   method          folders under "Methods": model-reduction (with equation discovery), vision, gnn,
+#                   active-learning ([] = not shown there)
+#   source          simulation and/or experiment (markers on the card)
+#   image           optional figure under static/, e.g. img/projects/kmc.png. A card shows its own figure if it
+#                   sets one, else the figure of its first listed paper that has one; with none, a generated pattern.
+#   image_credit    source line for the figure
+#   image_fit       "contain" shows the whole figure in the thumbnail
+#   image_position  crop anchor for the thumbnail, e.g. "top" or "30% 40%"
+
+# Kinetic Monte Carlo models learned from molecular dynamics
+- project: [kmc, l1-reduction]
+  label: "Yang et al., *MRS Adv.* (2016)"
+  year: 2016
+  url: "https://doi.org/10.1557/adv.2016.124"
+  idea: [sys-reduction]
+  domain: [catalysis, phys-dynamics]
+  method: [model-reduction]
+  source: [simulation]
+- project: kmc
+  label: "Yang et al., *NIPS Workshop on Machine Learning for Molecules and Materials* (2017)"
+  year: 2017
+  url: "https://www.quantum-machine.org/workshops/nips2017/"
+  idea: [sys-reduction]
+  domain: [catalysis]
+  method: [model-reduction]
+  source: [simulation]
+- project: [kmc, l1-reduction]
+  label: "Yang et al., *Chem. Sci.* (2017)"
+  year: 2017
+  url: "https://doi.org/10.1039/C7SC01052D"
+  idea: [sys-reduction]
+  domain: [catalysis, phys-dynamics]
+  method: [model-reduction]
+  source: [simulation]
+  image: img/projects/kmc.png
+  image_credit: "Figure: Clark et al., ACS Central Science (2021), adapted from Chen et al., J. Phys. Chem. A (2019)"
+- project: kmc
+  label: "Clark et al., *ACS Cent. Sci.* (2021)"
+  year: 2021
+  url: "https://doi.org/10.1021/acscentsci.1c00685"
+  note: "Review: traversing scale in complex many-body systems."
+  image: img/projects/kmc.png
+  image_credit: "Figure: Clark et al., ACS Central Science (2021), adapted from Chen et al., J. Phys. Chem. A (2019)"
+  idea: [sys-reduction]
+  domain: []
+  method: [model-reduction]
+  source: []
+- project: kmc
+  label: "Chen et al., *J. Phys. Chem. A* (2019)"
+  year: 2019
+  url: "https://doi.org/10.1021/acs.jpca.8b09947"
+  idea: [sys-reduction]
+  domain: [catalysis]
+  method: [model-reduction]
+  source: [simulation]
+
+# Sparse reduction of reaction networks
+- project: l1-reduction
+  label: "Yang et al., *Chaos* (2020)"
+  year: 2020
+  url: "https://doi.org/10.1063/1.5139463"
+  code: "https://github.com/csl-lab/irene2"
+  idea: [sys-reduction]
+  domain: [catalysis, phys-dynamics]
+  method: [model-reduction]
+  source: [simulation]
+  image: img/projects/l1-reduction.png
+  image_credit: "Figure: Yang et al., Chaos (2020)"
+
+# Implicit symbolic regression
+- project: implicit-sr
+  label: "Roberts et al., *GECCO Companion* (2024)"
+  year: 2024
+  url: "https://doi.org/10.1145/3638530.3654357"
+  idea: []
+  domain: [phys-conservation]
+  method: [model-reduction]
+  source: [simulation, experiment]
+  image: img/projects/implicit-sr.png
+  image_credit: "Figure: Roberts, Grethel and Yang, GECCO Companion (2024)"
+
+# Materials discovery: eutectics, Zintl phases, battery materials (shown only on folder cards in data/lenses.yaml)
+- label: "Mandal et al., *ChemRxiv* (2026)"
+  year: 2026
+  url: "https://doi.org/10.26434/chemrxiv.15007407/v1"
+  code: "https://github.com/nilamandal/spk-crystal-hierarchy"
+  idea: [sys-gnn]
+  domain: [energy-zintl]
+  method: [gnn]
+  source: [simulation]
+  image: img/projects/gnn.png
+  image_credit: "Figure: BaP₁₀ motif, from Mandal et al., ChemRxiv preprint"
+
+- label: "Mandal et al., *Digital Discovery* (2026)"
+  year: 2026
+  url: "https://doi.org/10.1039/D5DD00480B"
+  code: "https://github.com/nilamandal/SGNN_Eutectic_Mixtures"
+  idea: [sys-gnn, know-extrapolation]
+  domain: [energy-eutectic, sdl-structure-property]
+  method: [gnn]
+  source: [simulation, experiment]
+- label: "Sendek et al., *Energy Environ. Sci.* (2016)"
+  year: 2016
+  url: "https://doi.org/10.1039/C6EE02697D"
+  idea: [know-extrapolation]
+  domain: [energy-battery, sdl-structure-property]
+  method: []
+  source: [simulation, experiment]
+  image: img/projects/li-conductors.png
+  image_fit: contain
+  image_credit: "Figure: Sendek et al., Energy & Environmental Science (2016)"
+- label: "Parida et al., *J. Mater. Sci.* (2023)"
+  year: 2023
+  url: "https://doi.org/10.1007/s10853-023-09215-7"
+  idea: []
+  domain: [energy-battery, sdl-structure-property]
+  method: []
+  source: [simulation]
+- label: "Chaliha et al., *J. Mater. Chem. A* (2025)"
+  year: 2025
+  url: "https://doi.org/10.1039/D5TA06210A"
+  code: "https://github.com/prashungorai/papers/tree/main/2025/zintl-search-ubem"
+  code_label: "Data"
+  idea: [sys-gnn]
+  domain: [energy-zintl, sdl-structure-property]
+  method: [gnn]
+  source: [simulation]
+
+# Automated small-angle scattering analysis
+- project: sas
+  label: "Roberts et al., *Digital Discovery* (2025)"
+  year: 2025
+  url: "https://doi.org/10.1039/D5DD00059A"
+  code: "https://github.com/grahamWroberts/AutomatedSAS"
+  idea: [pred-hierarchical, know-extrapolation]
+  domain: [characterization, sdl-inverse-analysis, bio-structure]
+  method: []
+  source: [experiment]
+  image: img/projects/sas.png
+  image_fit: contain
+  image_credit: "Figure: Roberts et al., Digital Discovery (2025)"
+
+# Active learning
+- project: active-learning
+  label: "Pardakhti et al., *IEEE ICMLA* (2021)"
+  year: 2021
+  url: "https://doi.org/10.1109/ICMLA52953.2021.00263"
+  idea: [know-extrapolation]
+  domain: [sdl-active-learning]
+  method: [active-learning]
+  source: [simulation, experiment]
+- project: active-learning
+  label: "Pardakhti et al., *3D Print. Addit. Manuf.* (2023)"
+  year: 2023
+  url: "https://doi.org/10.1089/3dp.2023.0023"
+  idea: [pred-hierarchical]
+  domain: [mfg-3d-printing, sdl-active-learning, sdl-structure-property]
+  method: [active-learning]
+  source: [experiment]
+  image: img/projects/jettability.png
+  image_credit: "Figure: Pardakhti et al., 3D Printing and Additive Manufacturing (2023)"
+- project: active-learning
+  label: "Vaddi et al., *AI4Mat-NeurIPS Workshop* (2026)"
+  year: 2026
+  url: "https://neurips.cc/virtual/2026/workshop/137487"
+  idea: []
+  domain: [sdl-active-learning, sdl-structure-property, bio-structure]
+  method: [active-learning]
+  source: [experiment]
+
+# Computer vision for scientific images and videos
+- project: vision
+  label: "Sainju et al., *Sci. Rep.* (2022)"
+  year: 2022
+  url: "https://doi.org/10.1038/s41598-022-19697-1"
+  idea: []
+  domain: [characterization, sdl-inverse-analysis]
+  method: [vision]
+  source: [experiment]
+- project: vision
+  label: "Niu et al., *ICVS* (2023)"
+  year: 2023
+  url: "https://doi.org/10.1007/978-3-031-44137-0_16"
+  code: "https://github.com/niuyushuo/Semi-Siamese-Network-for-Robust-Change-Detection"
+  idea: [pred-change]
+  domain: [mfg-3d-printing]
+  method: [vision]
+  source: [experiment]
+- project: vision
+  label: "Niu et al., *Digital Discovery* (2025)"
+  year: 2025
+  url: "https://doi.org/10.1039/D5DD00333D"
+  code: "https://github.com/niuyushuo/MultiTaskDeltaNet"
+  idea: [pred-change]
+  domain: [catalysis, characterization, sdl-inverse-analysis]
+  method: [vision]
+  source: [experiment]
+  image: img/projects/change-detection.png
+  image_credit: "Figure: adapted from Niu et al., Digital Discovery (2025)"
+- project: vision
+  label: "Shi et al., *Accelerate Conference* (2025), poster"
+  year: 2025
+  url: ""
+  idea: [pred-change]
+  domain: [bio-vision, sdl-inverse-analysis, characterization]
+  method: [vision]
+  source: [experiment]
+- project: vision
+  label: "Niu et al., *IEEE ISBI* (2026)"
+  year: 2026
+  url: "https://doi.org/10.1109/ISBI61048.2026.11515780"
+  idea: [pred-change]
+  domain: [bio-vision, sdl-inverse-analysis, characterization]
+  method: [vision]
+  source: [experiment]
+
+# Large language models for 3D printing defect detection (shown on the 3D printing card)
+- label: "Khanghah et al., *J. Mech. Des.* (2025)"
+  year: 2025
+  url: "https://doi.org/10.1115/1.4070585"
+  note: "A conference version won the Best Paper Award at ASME IDETC/CIE 2025."
+  idea: []
+  domain: [mfg-3d-printing]
+  method: []
+  source: [experiment]
+- label: "Khanghah et al., *SSRN* (2026)"
+  year: 2026
+  url: "https://ssrn.com/abstract=6458658"
+  idea: []
+  domain: [mfg-3d-printing]
+  method: []
+  source: [experiment]
+
+# Uncertainty quantification (shown on folder cards in data/lenses.yaml, and on the sparse reduction card)
+- project: l1-reduction
+  label: "Villalon et al., *J. Comput. Phys.* (2024)"
+  year: 2024
+  url: "https://doi.org/10.1016/j.jcp.2024.113141"
+  idea: [sys-reduction, know-uq]
+  domain: [phys-dynamics, catalysis]
+  method: [model-reduction]
+  source: [simulation]
+- label: "Krakovsky et al., *Los Alamos National Laboratory Report* (2023)"
+  year: 2023
+  url: "https://www.researchgate.net/profile/Daniel_Rehn2/publication/376888454_Uncertainty_quantification_for_equations_of_state_copper_as_an_example/links/658db1d03c472d2e8e954c47/Uncertainty-quantification-for-equations-of-state-copper-as-an-example.pdf"
+  idea: [know-uq]
+  domain: [phys-conservation]
+  method: []
+  source: [simulation, experiment]

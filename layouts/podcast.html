@@ -1,0 +1,36 @@
+{{ define "main" }}
+{{ $p := hugo.Data.podcast }}
+<div class="wrap page-head">
+  <picture class="podcast-logo">
+    <source srcset="{{ "img/podcast/materials-and-megabytes-dark.svg" | relURL }}" media="(prefers-color-scheme: dark)">
+    <img src="{{ "img/podcast/materials-and-megabytes.svg" | relURL }}" alt="" width="458" height="243">
+  </picture>
+  <h1><em>Materials and Megabytes</em></h1>
+  <div class="lede prose">{{ .Content }}</div>
+  <p class="hero-actions">
+    <a class="button primary" href="{{ $p.site }}">Listen on Buzzsprout</a>
+    <a class="button" href="{{ $p.apple }}">Apple Podcasts</a>
+    <a class="button" href="{{ $p.rss }}">RSS feed</a>
+  </p>
+</div>
+<div class="wrap podcast-list">
+  {{ range $p.seasons }}
+  <section class="season{{ if .upcoming }} season-upcoming{{ end }}">
+    <h2 class="section-title">{{ .title }}</h2>
+    {{ with .intro }}<p class="season-intro">{{ . }}</p>{{ end }}
+    <ul class="episodes">
+      {{ range .episodes }}
+      <li>
+        {{ if .label }}<span class="ep-num">{{ .label }}</span>{{ else }}<span class="ep-num ep-soon"><span class="soon-dot" aria-hidden="true"></span>Soon</span>{{ end }}
+        <span class="ep-main">
+          {{ if .url }}<a class="ep-guest" href="{{ .url }}">{{ .title }}</a>{{ else }}<span class="ep-guest">{{ .title }}</span>{{ end }}
+          {{ with .note }}<span class="ep-note">{{ . }}</span>{{ end }}
+        </span>
+        <span class="ep-aff">{{ .affiliation }}</span>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+</div>
+{{ end }}

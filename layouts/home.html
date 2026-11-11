@@ -1,0 +1,61 @@
+{{ define "main" }}
+<section class="hero wrap">
+  <div class="hero-text">
+    <p class="hero-field">{{ .Params.field }}</p>
+    <h1 class="hero-title">{{ site.Params.tagline }}</h1>
+    <p class="hero-lede">{{ .Params.lede }}</p>
+    <p class="hero-actions">
+      <a class="button primary" href="{{ "research/" | relURL }}">See the research</a>
+      <a class="button" href="{{ "people/" | relURL }}">Meet the group</a>
+    </p>
+  </div>
+  {{/* The SciMaLL logo as a tile field (same grid as the header mark): S = systems, P = predictions,
+       K = knowing when, . = an empty cell (small dot). The tiles start shuffled and settle into the "S". */}}
+  {{ $rows := slice ".SSSS" "S...." ".PPP." "....K" "KKKK." }}
+  <div class="tiles" aria-hidden="true">
+    {{ range $rows }}{{ range split . "" }}
+      {{ if eq . "S" }}<span class="tile t-systems"></span>
+      {{ else if eq . "P" }}<span class="tile t-predictions"></span>
+      {{ else if eq . "K" }}<span class="tile t-knowing"></span>
+      {{ else }}<span class="tile t-open"></span>{{ end }}
+    {{ end }}{{ end }}
+  </div>
+</section>
+
+<section class="ideas wrap" aria-labelledby="ideas-h">
+  <h2 id="ideas-h" class="section-title">Three ideas run through our work</h2>
+  <ul class="idea-list">
+    {{ range hugo.Data.themes }}
+    <li class="idea idea-{{ .id }}">
+      <h3><a href="{{ "research/" | relURL }}#group-{{ .id }}">{{ .title }}</a></h3>
+      <p>{{ .blurb }}</p>
+    </li>
+    {{ end }}
+  </ul>
+  {{ with .Params.toolkit }}<p class="ideas-toolkit">{{ . | markdownify }}</p>{{ end }}
+</section>
+
+<section class="about wrap">
+  <div class="about-lab">
+    <h2 class="section-title">About the lab</h2>
+    <figure class="about-figure about-fade">
+      <img class="about-photo" src="{{ "img/campus-1.jpg" | relURL }}" alt="Campus buildings at UConn Storrs on a summer day" width="1600" height="578" loading="lazy">
+      <img class="about-photo about-photo-2" src="{{ "img/campus-2.jpg" | relURL }}" alt="" width="1600" height="578" loading="lazy">
+    </figure>
+    <div class="prose">{{ .Content }}</div>
+  </div>
+  <div class="about-news">
+    <h2 class="section-title">News</h2>
+    <ul class="news news-scroll" tabindex="0" aria-label="News, newest first">
+      {{ range hugo.Data.news }}
+      <li><span class="news-date">{{ .date }}</span><span>{{ .text | markdownify }}</span></li>
+      {{ end }}
+    </ul>
+  </div>
+</section>
+{{ end }}
+
+{{ define "scripts" }}
+{{ $js := resources.Get "js/tiles.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer></script>
+{{ end }}

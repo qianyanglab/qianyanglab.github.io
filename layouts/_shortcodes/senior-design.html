@@ -1,0 +1,9 @@
+{{- $all := hugo.Data.senior_design.projects -}}
+<ul class="sd-list">
+{{- range where $all "featured" true }}{{ partial "sd-item.html" . }}{{ end -}}
+</ul>
+{{- with where $all "featured" "!=" true }}
+<h3 class="sd-more-title">Other projects</h3>
+<p class="sd-more-note">Only projects with a public page on UConn’s Senior Design Day site are listed here.</p>
+<ul class="sd-list">{{ range . }}{{ partial "sd-item.html" . }}{{ end }}</ul>
+{{- end }}

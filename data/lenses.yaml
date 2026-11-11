@@ -1,0 +1,168 @@
+# Groupings on the Research page (the buttons), in order.
+# key: the tag in data/papers.yaml to group by. groups: the order and titles of the folders.
+# In each folder, a card shows only its papers tagged for that folder; a card appears in every folder it has
+# papers for. Papers with none of a grouping's tags are not shown in that grouping; each grouping ends with an
+# "Other" section that links to the full list of papers on Google Scholar.
+#
+# Optional, per folder:
+#   titles   a different card title in this folder, by project id, e.g. { sas: "New title" }
+#   summaries  a different card summary in this folder, by project id
+#   hide     project ids whose cards this folder leaves out, e.g. [kmc]
+#   order    the order of project cards in this folder, by project id (others follow in their usual order)
+#   cards    the folder's own cards instead of the project cards: each card collects every paper tagged
+#            with that card's id, whatever project it comes from. A card takes id, title, summary, theme,
+#            and optionally code, code_label, and a figure (image, image_credit, image_fit, image_position)
+#            that replaces the figure taken from its papers.
+- id: idea
+  label: Three Key Ideas
+  key: idea
+  groups:
+    - id: systems
+      label: Decomposing complex systems
+      cards:
+        - id: sys-reduction
+          title: Learning and reducing complex reaction networks
+          summary: "From molecular dynamics simulations, we learn kinetic Monte Carlo models that extrapolate in time and transfer to initial conditions they were not trained on. We use L1 regularization to reduce large reaction networks and other nonlinear dynamical systems to the few reactions or terms that best preserve their behavior. Applications include combustion, energetic materials, and catalysis."
+          theme: systems
+          code: "https://github.com/vincentdufourdecieux/KMC_analysis"
+          code_label: "Related code from our collaborators"
+        - id: sys-gnn
+          title: Interpretable graph neural networks for materials
+          summary: "We break mixtures into their components and crystal structures into motifs, and build graph neural networks that learn how these pieces interact. Applications include predicting the melting points of eutectic mixtures and discovering the structural building blocks of Zintl phases."
+          theme: systems
+    - id: predictions
+      label: Decomposing complex predictions
+      cards:
+        - id: pred-hierarchical
+          title: Hierarchical supervised learning
+          summary: "We break a hard prediction into a hierarchical sequence of simpler questions, each easier to learn from small data: from families of particle morphologies in small-angle scattering to variations in printing outcomes for inkjet 3D printing."
+          theme: predictions
+          image: img/projects/sas-hierarchy.png
+          image_credit: "Figure: hierarchical classification of nanoparticle shapes, Roberts et al., Digital Discovery (2025)"
+        - id: pred-change
+          title: Change detection for image segmentation
+          summary: "We recast image segmentation as change detection, learning what changes between images across domains, over time, and between fidelities, so that difficult features can be segmented from small labeled datasets. Applications include defect detection for 3D printing, capturing carbon gasification kinetics from operando electron microscopy, and biomedical image segmentation."
+          theme: predictions
+    - id: knowing
+      label: Knowing when it works
+      cards:
+        - id: know-extrapolation
+          title: Testing extrapolation
+          summary: "We test how well our models extrapolate and transfer beyond their training data, to candidate materials far from the training set."
+          theme: knowing
+          image: img/projects/eutectic-fatty-acids-label.png
+          image_credit: "Figure: predicted against measured melting temperatures of fatty acid eutectics, after transfer from a model trained on molten salt eutectics; adapted from Mandal et al., Digital Discovery (2026)"
+        - id: know-uq
+          title: Uncertainty quantification
+          summary: "We contributed to uncertainty quantification for parameter estimation in dynamical systems, and for materials equations of state."
+          theme: knowing
+          image: img/projects/uq-trajectories.png
+          image_credit: "Figure: trajectories sampled from the estimated parameter distribution, with average measurements in red; Villalon et al., J. Comput. Phys. (2024)"
+- id: method
+  label: Methods
+  key: method
+  groups:
+    - id: model-reduction
+      label: Model reduction and equation discovery
+      titles:
+        l1-reduction: Sparse reduction of nonlinear dynamics
+      summaries:
+        l1-reduction: "Uses L1 regularization to find the reactions or terms that matter, shrinking large nonlinear dynamical systems while preserving their behavior. The method has few parameters and runs in polynomial time, so it reduces systems with thousands of components in minutes. Applications include combustion, energetic materials, catalysis, and more."
+    - { id: vision, label: Computer vision }
+    - id: gnn
+      label: Graph neural networks
+      cards:
+        - id: gnn
+          title: Interpretable graph neural networks for materials
+          summary: "Builds graph neural networks that are natively interpretable. Methods motivated by Janossy pooling give order-invariant predictions for mixtures from their components; sparse hierarchical graph learning discovers, without supervision, the structural motifs that complex materials share."
+          theme: systems
+    - { id: active-learning, label: Active learning }
+- id: domain
+  label: Applications
+  key: domain
+  groups:
+    - id: sdl
+      label: Self-driving labs
+      cards:
+        - id: sdl-structure-property
+          title: Process–structure–property models
+          summary: "A material’s composition and processing determine its structure, and together all three determine its properties. We build and contribute to models that learn these relationships to choose which materials and processing conditions are worth making and testing."
+          theme: systems
+          image: img/projects/eutectic-parity.png
+          image_fit: contain
+          image_credit: "Figure: predictions against measured eutectic melting temperatures, adapted from Mandal et al., Digital Discovery (2026)"
+        - id: sdl-inverse-analysis
+          title: Inverse analysis of characterization data
+          summary: "We develop methods that infer structure and extract quantitative information from raw characterization data, ranging from scattering curves to microscopy images and videos, so that analysis can keep pace with automated experiments."
+          theme: predictions
+        - id: sdl-active-learning
+          title: Active learning
+          summary: "We develop and contribute to methods for choosing each new experiment where it will be most informative, so that useful models can be built from a limited experimental budget."
+          theme: knowing
+    - id: energy
+      label: Energy materials
+      cards:
+        - id: energy-eutectic
+          title: Eutectic mixtures
+          summary: "We predict the melting points of eutectic mixtures from the structures of their components alone. Our models learn from molten salts and transfer to deep eutectic solvents, both promising materials for thermal energy storage and batteries."
+          theme: systems
+          image: img/projects/eutectic-gnn.png
+          image_fit: contain
+          image_credit: "Figure: adapted from Mandal et al., Digital Discovery (2026)"
+        - id: energy-battery
+          title: Metal-ion battery materials
+          summary: "We contribute to studies screening large candidate spaces for battery materials, from solid lithium-ion conductors to intercalating ions and layered host materials."
+          theme: knowing
+          image: img/projects/li-conductors.png
+          image_fit: contain
+          image_credit: "Figure: Sendek et al., Energy & Environmental Science (2016)"
+        - id: energy-zintl
+          title: Zintl phases
+          summary: "Zintl phases are promising thermoelectric materials. We use graph neural networks to model how structural building blocks drive their properties."
+          theme: systems
+          image: img/projects/gnn.png
+          image_credit: "Figure: BaP₁₀ motif, from Mandal et al., ChemRxiv preprint"
+    - id: characterization
+      label: Materials characterization
+      titles:
+        vision: Computer vision for microscopy
+      summaries:
+        vision: "We segment difficult features in microscopy images and videos from small labeled datasets, with applications including operando electron microscopy of carbon gasification and biomedical images."
+    - id: catalysis
+      label: Chemical kinetics for combustion, energetic materials, and catalysis
+      titles:
+        vision: Computer vision for carbon gasification kinetics
+      summaries:
+        vision: "Computer vision enables automated estimation of carbon gasification kinetics from operando electron microscopy."
+        kmc: "We learn kinetic Monte Carlo models with thousands of reactions directly from molecular dynamics simulations. The models extrapolate in time and transfer to initial conditions they were not trained on."
+    - id: manufacturing
+      label: Manufacturing
+      cards:
+        - id: mfg-3d-printing
+          title: 3D printing process optimization and defect detection
+          summary: "We develop and contribute to machine learning methods for process optimization and defect detection for 3D printing from small data."
+          theme: predictions
+    - id: biology
+      label: Biomedical engineering
+      cards:
+        - id: bio-vision
+          title: Computer vision for biomedical images
+          summary: "We develop computer vision for biomedical images that learns from small data and/or with a human in the loop."
+          theme: predictions
+          image: img/projects/deltasegment.jpg
+          image_credit: "Figure: a tissue image and its normalized difference from a lower-fidelity version, adapted from Niu et al., IEEE ISBI (2026)"
+        - id: bio-structure
+          title: Automated structure analysis with applications to pharmaceuticals
+          summary: "Many pharmaceutical products are formulations whose performance depends on their nanoscale structure. We automate the analysis of small-angle scattering data to recover nanoparticle shape and structure, and contribute to active learning for phase mapping."
+          theme: predictions
+    - id: physics
+      label: Physics and dynamical systems
+      cards:
+        - id: phys-dynamics
+          title: Sparse reduction and UQ for nonlinear dynamics
+          summary: "We reduce large nonlinear dynamical systems to the few terms that best preserve their behavior, and contribute to uncertainty quantification for learned dynamical systems."
+          theme: systems
+        - id: phys-conservation
+          title: Conservation laws and equations of state
+          summary: "We discover implicit equations and conserved quantities from data. We also contributed to uncertainty quantification for materials equations of state."
+          theme: systems

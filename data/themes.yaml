@@ -1,0 +1,11 @@
+# The three research themes. Each project card takes its color from its theme.
+# Colors are set in assets/css/main.css (--systems, --predictions, --knowing).
+- id: systems
+  title: Decomposing complex systems
+  blurb: We break a system into its components, such as species, reactions, or motifs, and learn how they interact. Recombining components lets our models make predictions on systems they were never trained on.
+- id: predictions
+  title: Decomposing complex predictions
+  blurb: We break a hard prediction into simpler subproblems. Each subproblem is easier to learn, and their solutions can be recombined to answer more complex questions with very little data.
+- id: knowing
+  title: Knowing when it works
+  blurb: We test how well our models extrapolate and quantify their uncertainty. Our goal is to measure whether the training data covers the building blocks a new case needs, so we can evaluate in advance whether recombination will succeed.

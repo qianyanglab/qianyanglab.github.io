@@ -1,0 +1,75 @@
+{{ define "main" }}
+{{ $d := hugo.Data.people }}
+<div class="wrap page-head">
+  <h1>{{ .Title }}</h1>
+</div>
+<div class="wrap people">
+  {{ with $d.photos }}
+  <section class="people-photos">
+    <div class="carousel" data-carousel data-autoplay="6000">
+      <div class="carousel-track" tabindex="0" role="region" aria-label="Group photos">
+        {{ range $i, $p := . }}
+        <figure class="carousel-slide">
+          <img src="{{ $p.image | relURL }}" alt="{{ with $p.alt }}{{ . }}{{ else }}Group photo, {{ $p.year }}{{ end }}" {{ with images.Config (path.Join "static" $p.image) }}width="{{ .Width }}" height="{{ .Height }}"{{ end }}{{ if $i }} loading="lazy"{{ end }}>
+          {{ with $p.credit }}<figcaption class="carousel-credit">{{ . }}</figcaption>{{ end }}
+        </figure>
+        {{ end }}
+      </div>
+      {{ if gt (len .) 1 }}
+      <button class="carousel-btn carousel-prev" type="button" aria-label="Previous photo">&#8249;</button>
+      <button class="carousel-btn carousel-next" type="button" aria-label="Next photo">&#8250;</button>
+      <div class="carousel-dots">
+        <button type="button" class="carousel-pause" aria-label="Pause slideshow" aria-pressed="false"></button>
+        {{ range $i, $_ := . }}<button type="button" aria-label="Photo {{ add $i 1 }}"></button>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+  <section class="join join-lead prose">
+    <h2 class="section-title">Joining the lab</h2>
+    {{ .Content }}
+  </section>
+  {{ with $d.pi }}
+  <section class="pi-bio" id="{{ .id }}">
+    {{ if .photo }}<img class="pi-bio-photo" src="{{ .photo | relURL }}" alt="{{ .name }}" width="220" height="220">{{ end }}
+    <div>
+      <h2 class="pi-bio-name">{{ .name }}</h2>
+      <p class="pi-bio-role">Principal investigator · {{ .role }}</p>
+      <div class="prose">{{ .bio | markdownify }}</div>
+    </div>
+  </section>
+  {{ end }}
+  <section>
+    <h2 class="section-title">Current group</h2>
+    <ul class="person-grid">
+      {{ range $d.current }}
+      <li class="person">
+        {{ partial "avatar.html" . }}
+        <span class="person-name">{{ .name }}</span>
+        <span class="person-role">{{ .role }}</span>
+        {{ with .note }}<span class="person-note">{{ . }}</span>{{ end }}
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  <section>
+    <h2 class="section-title">Alumni</h2>
+    <div class="table-scroll">
+    <table class="alumni">
+      <thead><tr><th scope="col">Name</th><th scope="col">Role</th><th scope="col">Through</th><th scope="col">Next</th></tr></thead>
+      <tbody>
+        {{ range $d.alumni }}
+        <tr><td>{{ .name }}</td><td>{{ .role }}</td><td>{{ .years }}</td><td>{{ .now }}</td></tr>
+        {{ end }}
+      </tbody>
+    </table>
+    </div>
+  </section>
+</div>
+{{ end }}
+
+{{ define "scripts" }}
+{{ $js := resources.Get "js/carousel.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer></script>
+{{ end }}

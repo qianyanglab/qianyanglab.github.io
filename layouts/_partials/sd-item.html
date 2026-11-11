@@ -1,0 +1,1 @@
+<li id="sd-{{ .title | anchorize }}"><a href="{{ .url }}">{{ .title }}</a> <span class="sd-meta">{{ .year }}{{ if .cs4science }} · <span class="sd-tag"><span class="sd-dot" aria-hidden="true"></span>CS for science</span>{{ end }}{{ with .note }} · {{ . | markdownify }}{{ end }}</span></li>

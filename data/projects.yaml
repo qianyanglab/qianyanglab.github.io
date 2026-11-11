@@ -1,0 +1,54 @@
+# Project cards on the Research page, in display order. Papers are listed in data/papers.yaml.
+# Folders that define their own cards in data/lenses.yaml don't use these.
+#
+#   id        short name; papers point to it with `project`
+#   title     card title
+#   summary   one or two sentences shown when the card opens; [text](url) makes a link
+#   theme     systems | predictions | knowing (the card's color and pattern shape)
+#   code      optional GitHub URL for code that belongs to the whole project, not one paper
+#   code_label  optional text for that code button (default "Code")
+#   related     optional small links under the papers, each with label and url (a Teaching
+#               entry is /teaching/#sd- followed by its title in lowercase, words joined by hyphens)
+#   related_label  the line's lead-in for those links (default "Related")
+
+- id: kmc
+  title: Kinetic Monte Carlo models learned from molecular dynamics
+  summary: "Learns kinetic Monte Carlo models with thousands of reactions directly from molecular dynamics simulations. The models extrapolate in time and transfer to initial conditions they were not trained on."
+  theme: systems
+  code: "https://github.com/vincentdufourdecieux/KMC_analysis"
+  code_label: "Related code from our collaborators"
+
+- id: l1-reduction
+  title: Sparse reduction of reaction networks
+  summary: "We use L1 regularization to keep only the reactions that matter, shrinking large reaction networks and other nonlinear dynamical systems while preserving their behavior. Applications include combustion, energetic materials, catalysis, and more."
+  theme: systems
+
+- id: implicit-sr
+  title: Implicit symbolic regression
+  summary: "Discovers implicit equations and conserved quantities from small, noisy data: laws that relate variables to one another, rather than formulas that predict one variable from the rest."
+  theme: systems
+
+
+
+- id: sas
+  title: Automated small-angle scattering analysis
+  summary: "We automate the analysis of small-angle scattering data to extract nanoparticle morphology and structural parameters. Ongoing collaboration with Oak Ridge National Laboratory and NIST on self-driving labs for small-angle scattering."
+  theme: predictions
+  related_label: "Related senior design projects"
+  related:
+    - label: "Self-driving labs support with NIST (2025–26)"
+      url: "/teaching/#sd-bridging-the-gap-between-developers-and-scientists-via-technical-support-for-self-driving-labs"
+    - label: "Scattering analysis GUI (2024–25)"
+      url: "/teaching/#sd-gui-development-for-machine-learning-enabled-inverse-analysis-of-scattering-experiments"
+    - label: "Light scattering automation (2023–24)"
+      url: "/teaching/#sd-light-scattering-automation"
+
+- id: active-learning
+  title: Model selection and representation for active learning
+  summary: "Builds models from small labeling budgets by choosing each new experiment where it is most informative. We study how to choose model hyperparameters for active learning and how to frame it under strong label imbalance, and contribute to active learning with complex inputs."
+  theme: predictions
+
+- id: vision
+  title: Computer vision for scientific images and videos
+  summary: "Segments and tracks difficult features in scientific images and videos with small labeled datasets. Applications include defects in inkjet-printed parts, carbon gasification kinetics from operando electron microscopy, and biomedical images."
+  theme: predictions

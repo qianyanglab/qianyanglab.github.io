@@ -1,0 +1,18 @@
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-lab">
+      <p class="footer-name">{{ site.Params.labLong }}</p>
+      <p>School of Computing, University of Connecticut</p>
+    </div>
+    <address class="footer-contact">
+      <p>{{ site.Params.office }}<br>{{ site.Params.address }}</p>
+      <p><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a><br>{{ site.Params.phone }}</p>
+    </address>
+    <ul class="footer-links">
+      <li><a href="{{ site.Params.scholar }}">Google Scholar</a></li>
+      <li><a href="{{ site.Params.orcid }}">ORCID</a></li>
+      {{ with site.Params.github }}<li><a href="{{ . }}">GitHub</a></li>{{ end }}
+      {{ with site.Params.linkedin }}<li><a href="{{ . }}">LinkedIn</a></li>{{ end }}
+    </ul>
+  </div>
+</footer>

@@ -1,0 +1,29 @@
+# "Collaborators" paragraph on the Research page.
+# Who is listed: current collaborators, meaning the people and teams who give us data (from experiments or
+# from simulations such as MD and DFT) and close methods collaborators. Students, postdocs and staff
+# scientists are listed when they work with us directly.
+#
+#   intro    the sentence before the list
+#   people   listed alphabetically by `sort` (last name); several names can share one entry
+#   org      "UConn" + department or center acronym for UConn people, otherwise the organization;
+#            it may hold a link, written [text](url)
+#   url      a profile or lab page (a name without a url shows as plain text)
+#   labs     teams named at the end of the list
+intro: "Our work is built on close collaborations with many computational and experimental scientists across materials science, chemistry and chemical engineering, mechanical engineering, biomedical engineering, and more. Current collaborations include:"
+people:
+  - { sort: Dongare, names: [{ name: Avinash Dongare, url: "https://engineering.uconn.edu/faculty/mse/avinash-dongare/" }], org: UConn MSE }
+  - { sort: Gorai, names: [{ name: Prashun Gorai, url: "https://faculty.rpi.edu/prashun-gorai" }], org: Rensselaer Polytechnic Institute }
+  - { sort: Jankovic, names: [{ name: Jasna Jankovic, url: "https://engineering.uconn.edu/faculty/mse/jasna-jankovic-2/" }], org: UConn MSE }
+  - { sort: Lin, names: [{ name: Yao Lin, url: "https://polymer.ims.uconn.edu/person/yao-lin" }], org: UConn Chemistry }
+  - { sort: Ma, names: [{ name: Anson Ma, url: "https://engineering.uconn.edu/faculty/cbe/anson-w-k-ma/" }], org: UConn CBE }
+  - { sort: Martin, names: [{ name: Tyler Martin, url: "https://www.nist.gov/ncnr/research-and-science/recent-upgrades/autonomous-formulation-lab-afl" }, { name: Kiran Vaddi, url: "https://kiranvad.github.io/" }], org: NIST }
+  - { sort: Nieh, names: [{ name: Mu-Ping Nieh, url: "https://engineering.uconn.edu/faculty/cbe/mu-ping-nieh/" }], org: UConn CBE }
+  - { sort: Sing-Long, names: [{ name: Carlos Sing-Long, url: "https://ingenieriabiologicaymedica.uc.cl/en/people/carlos-a-sing-long/" }], org: Pontificia Universidad Católica de Chile }
+  - { sort: Song, names: [{ name: Jie Song, url: "https://umassmed.edu/songlab/principal-investigator" }, { name: Shing-Yun Chang, url: "https://profiles.umassmed.edu/profile/85559981" }], org: UMass Chan Medical School }
+  - { sort: Xu, names: [{ name: Hongyi Xu, url: "https://engineering.uconn.edu/faculty/me/hongyi-xu/" }], org: UConn SMAME }
+  - { sort: Yakavets, names: [{ name: Ilya Yakavets }, { name: Yimu Zhao }], org: "[SDL 6 team](https://acceleration.utoronto.ca/sdls/sdl6-human-organ-mimicry), Acceleration Consortium, University of Toronto" }
+  - { sort: Zhou, names: [{ name: Xiao-Dong Zhou, url: "https://zhoucleanenergyresearch.engineering.uconn.edu/" }], org: UConn C2E2 }
+  - { sort: Zhu, names: [{ name: Yuanyuan Zhu, url: "https://engineering.uconn.edu/faculty/mse/yuanyuan-zhu/" }], org: UConn MSE }
+labs:
+  - Los Alamos National Laboratory
+  - Oak Ridge National Laboratory

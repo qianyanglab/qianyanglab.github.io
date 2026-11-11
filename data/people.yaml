@@ -1,0 +1,49 @@
+# Group members. Photos: put a square image at static/img/people/<id>.jpg and set photo: img/people/<id>.jpg.
+# Without a photo, initials are shown.
+pi:
+  name: Qian Yang
+  id: qian-yang
+  role: Associate Professor, School of Computing
+  photo: img/people/qian-yang.jpg
+  # Bio shown at the top of the People page (Markdown; blank line between paragraphs).
+  bio: |
+    Qian Yang is an Associate Professor in the School of Computing at the University of Connecticut and leads the Scientific and Computational Machine Learning Laboratory (SciMaLL). Her research lies at the intersection of computational science and the physical sciences, developing machine learning methods that build interpretable and extrapolative models from small, noisy datasets, with applications in materials, chemistry, physics, manufacturing, and biomedical engineering. She received her PhD from the Institute for Computational and Mathematical Engineering at Stanford University and was a postdoctoral scholar in the Materials Computation and Theory Group at Stanford. She holds a BA in applied mathematics with a focus in computer science from Harvard College.
+
+    Yang has given more than 25 invited talks at venues including meetings of the Materials Research Society and the American Chemical Society, 3M, Google, Seagate, Oak Ridge and Los Alamos National Laboratories. Honors include an NSF CAREER Award (2026) and the UConn University Teaching Fellow Award (2024).
+
+# Slideshow at the top of the People page, newest first.
+# `alt` describes the photo for screen readers; `credit` (optional) shows a small photo credit.
+photos:
+  - { image: img/people/group-2026.jpg, year: "2026", alt: "The current group. From left: Giovanni Romano, Jerry Zhang, Agronil Das and Qian Yang." }
+  - { image: img/people/isbi-2026.jpg, year: "April 2026", alt: "Presenting the DeltaSegment poster at IEEE ISBI 2026" }
+  - { image: img/people/poster-award-2026.jpg, year: "March 2026", alt: "First-place award, School of Computing, 12th Annual UConn College of Engineering Graduate Poster Competition, 2026. Photo: UConn College of Engineering", credit: "Photo: UConn College of Engineering" }
+  - { image: img/people/group-2025.jpg, year: "August 2025" }
+  - { image: img/people/siam-mds-2025.jpg, year: "2025", alt: "Lab members at the SIAM Conference on Mathematics of Data Science, 2025" }
+  - { image: img/people/group-2022.jpg, year: "Summer 2022" }
+  - { image: img/people/group-2019.jpg, year: "2019" }
+
+# Current group: name, photo, role and an optional note are shown; `since` (year joined) is kept for records.
+current:
+  - { name: Nila Mandal, id: nila-mandal, role: PhD student, since: 2019, photo: img/people/nila-mandal.jpg }
+  - { name: Giovanni Romano, id: giovanni-romano, role: PhD student, since: 2025, photo: img/people/giovanni-romano.jpg }
+  - { name: Jerry Zhang, id: jerry-zhang, role: PhD student, since: 2026, photo: img/people/jerry-zhang.jpg }
+  - { name: Kiarash Naghavi Khanghah, id: kiarash-khanghah, role: MS student, since: 2025, note: "Concurrent MechEng PhD advised by Hongyi Xu", photo: img/people/kiarash-khanghah.jpg }
+  - { name: Agronil Das, id: agronil-das, role: Undergraduate researcher, since: 2026, photo: img/people/agronil-das.jpg }
+
+# Alumni table, in display order. `years` is the latest year each person worked with the lab;
+# `now` is the Next column.
+alumni:
+  - { name: Graham Roberts, role: PhD, years: "2025", now: Symbolic Mind }
+  - { name: Yushuo Niu, role: PhD, years: "2025" }
+  - { name: Maryam Pardakhti, role: Postdoc, years: "2021", now: 3M Company }
+  - { name: Shayani Parida, role: "MS, Computer Science (concurrent Materials Science PhD advised by Avinash Dongare)", years: "2023", now: Amazon }
+  - { name: James Maniscalco, role: MEng, years: "2023", now: IBM }
+  - { name: Hailey Reed, role: Undergraduate, years: "2026", now: "NYU Courant (MS)" }
+  - { name: Jacob Anderson, role: Undergraduate, years: "2026", now: IBM }
+  - { name: Fernanda Hanashiro, role: Undergraduate, years: "2024", now: "JP Morgan Chase" }
+  - { name: Everett Grethel, role: Undergraduate, years: "2025", now: "LLNL and UCLA (MS)" }
+  - { name: Alexander Chandy, role: Undergraduate, years: "2023", now: "University of Maryland (MS)" }
+  - { name: Arjun Viswanathan, role: "High school researcher, also Undergraduate (summer)", years: "2022", now: "Northeastern (MS), now Boston Dynamics" }
+  - { name: Vikesh Chinta, role: Undergraduate, years: "2022" }
+  - { name: Bryan Lojano, role: Undergraduate, years: "2022", now: Mastercard }
+  - { name: Jessica Wessner, role: Undergraduate, years: "2022" }

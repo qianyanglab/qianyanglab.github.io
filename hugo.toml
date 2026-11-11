@@ -1,0 +1,43 @@
+baseURL = "https://www.qianyanglab.com/"
+locale = "en-US"
+title = "SciMaLL · Qian Yang Lab at UConn"
+
+# No external theme: every template lives in layouts/, every style in assets/css/main.css.
+disableKinds = ["taxonomy", "term", "RSS"]
+
+[params]
+  description = "The Scientific and Computational Machine Learning Laboratory (SciMaLL) at the University of Connecticut. We find the interpretable building blocks of physical systems, and of the predictions we make about them."
+  labShort = "SciMaLL"
+  labLong = "Scientific and Computational Machine Learning Laboratory"
+  labLongShort = "Scientific & Computational Machine Learning Laboratory"
+  tagline = "Learning more from less"
+  email = "qyang@uconn.edu"
+  phone = "(860) 486-5472"
+  office = "ITE 259"
+  address = "371 Fairfield Way, Unit 4155, Storrs, CT 06269"
+  scholar = "https://scholar.google.com/citations?user=4lt7xDkAAAAJ&hl=en"
+  orcid = "https://orcid.org/0000-0001-5519-1092"
+  # Fill these in to show them in the footer; leave empty to hide.
+  github = ""
+  linkedin = "https://www.linkedin.com/in/qian-yang-a0609213/"
+
+[menus]
+  [[menus.main]]
+    name = "Research"
+    pageRef = "/research"
+    weight = 10
+  [[menus.main]]
+    name = "People"
+    pageRef = "/people"
+    weight = 30
+  [[menus.main]]
+    name = "Teaching"
+    pageRef = "/teaching"
+    weight = 40
+  [[menus.main]]
+    name = "Podcast"
+    pageRef = "/podcast"
+    weight = 60
+
+[markup.goldmark.renderer]
+  unsafe = true

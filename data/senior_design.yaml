@@ -1,0 +1,56 @@
+# Senior design projects on the Teaching page, newest first.
+# Fields: year, title, url, role (instructor / sponsor / instructor and sponsor; kept for records), note (optional),
+#         featured (true = listed first; the rest go under "Other projects"), cs4science (true adds a tag).
+projects:
+  - year: "2025–26"
+    title: "Language Interface and Learning Platform for Accessible Quantum Programming"
+    url: "https://seniordesignday.engr.uconn.edu/seniorprojectpt/senior-design-2026-school-of-computing-team-50/"
+    note: "[QLearn](https://www.qlearn.live/) · [QLeap](https://github.com/LejoLevan/qleap)"
+    role: "instructor and sponsor"
+    cs4science: false
+  - year: "2025–26"
+    title: "The Daily Digital Campus: UConn and the World, At Your Fingertips"
+    url: "https://seniordesignday.engr.uconn.edu/seniorprojectpt/senior-design-2026-school-of-computing-team-54/"
+    role: "instructor"
+    cs4science: false
+  - year: "2025–26"
+    title: "Bridging the Gap Between Developers and Scientists via Technical Support for Self-Driving Labs"
+    url: "https://seniordesignday.engr.uconn.edu/?p=27171"
+    role: "instructor and sponsor"
+    note: "With NIST's [Autonomous Formulation Lab](https://www.nist.gov/ncnr/research-and-science/recent-upgrades/autonomous-formulation-lab-afl); presented at Oak Ridge National Laboratory"
+    featured: true
+    cs4science: true
+  - year: "2024–25"
+    title: "GUI Development for Machine Learning-Enabled Inverse Analysis of Scattering Experiments"
+    url: "https://seniordesignday.engr.uconn.edu/seniorprojectpt/senior-design-2025-computer-science-and-engineering-team-02"
+    note: "With [Mu-Ping Nieh](https://engineering.uconn.edu/faculty/cbe/mu-ping-nieh/) (Chemical and Biomolecular Engineering)"
+    role: "sponsor"
+    featured: true
+    cs4science: true
+  - year: "2024–25"
+    title: "Building a Machine Learning Model to Interpret Virtual X-ray Diffraction Patterns"
+    url: "https://seniordesignday.engr.uconn.edu/seniorprojectpt/senior-design-2025-computer-science-and-engineering-team-15"
+    note: "Also mentored by [Avinash Dongare](https://engineering.uconn.edu/faculty/mse/avinash-dongare/) (Materials Science and Engineering)"
+    role: "sponsor"
+    featured: true
+    cs4science: true
+  - year: "2023–24"
+    title: "Light Scattering Automation"
+    url: "https://seniordesignday.engr.uconn.edu/seniorprojectpt/senior-design-2024-computer-science-and-engineering-team-19"
+    note: "With [Mu-Ping Nieh](https://engineering.uconn.edu/faculty/cbe/mu-ping-nieh/) (Chemical and Biomolecular Engineering)"
+    role: "instructor and sponsor"
+    featured: true
+    cs4science: true
+  - year: "2023–24"
+    title: "Solubility Data Management"
+    url: "https://seniordesignday.engr.uconn.edu/seniorprojectpt/senior-design-2024-computer-science-and-engineering-team-22"
+    role: "instructor"
+    note: "Sponsored by Boehringer Ingelheim"
+    featured: true
+    cs4science: true
+  - year: "2023–24"
+    title: "NUWC Signal Collection Device"
+    url: "https://seniordesignday.engr.uconn.edu/seniorprojectpt/senior-design-2024-computer-science-and-engineering-team-18"
+    role: "instructor"
+    note: "Sponsored by the Naval Undersea Warfare Center"
+    cs4science: false
