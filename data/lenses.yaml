@@ -24,6 +24,8 @@
           title: Learning and reducing complex reaction networks
           summary: "From molecular dynamics simulations, we learn kinetic Monte Carlo models that extrapolate in time and transfer to initial conditions they were not trained on. We use L1 regularization to reduce large reaction networks and other nonlinear dynamical systems to the few reactions or terms that best preserve their behavior. Applications include combustion, energetic materials, and catalysis."
           theme: systems
+          image: img/projects/kmc.png
+          image_credit: "Figure: Clark et al., ACS Central Science (2021), adapted from Chen et al., J. Phys. Chem. A (2019)"
           code: "https://github.com/vincentdufourdecieux/KMC_analysis"
           code_label: "Related code from our collaborators"
         - id: sys-gnn
@@ -47,17 +49,11 @@
       label: Knowing when it works
       cards:
         - id: know-extrapolation
-          title: Testing extrapolation
-          summary: "We test how well our models extrapolate and transfer beyond their training data, to candidate materials far from the training set."
+          title: Testing extrapolation and quantifying uncertainty
+          summary: "We test how well our models extrapolate and transfer beyond their training data, to initial conditions they were not trained on and to candidate materials far from the training set. We have also contributed to uncertainty quantification for parameter estimation in dynamical systems and for materials equations of state."
           theme: knowing
           image: img/projects/eutectic-fatty-acids-label.png
           image_credit: "Figure: predicted against measured melting temperatures of fatty acid eutectics, after transfer from a model trained on molten salt eutectics; adapted from Mandal et al., Digital Discovery (2026)"
-        - id: know-uq
-          title: Uncertainty quantification
-          summary: "We contributed to uncertainty quantification for parameter estimation in dynamical systems, and for materials equations of state."
-          theme: knowing
-          image: img/projects/uq-trajectories.png
-          image_credit: "Figure: trajectories sampled from the estimated parameter distribution, with average measurements in red; Villalon et al., J. Comput. Phys. (2024)"
 - id: method
   label: Methods
   key: method
@@ -152,7 +148,7 @@
           image: img/projects/deltasegment.jpg
           image_credit: "Figure: a tissue image and its normalized difference from a lower-fidelity version, adapted from Niu et al., IEEE ISBI (2026)"
         - id: bio-structure
-          title: Automated structure analysis with applications to pharmaceuticals
+          title: Pharmaceutical applications
           summary: "Many pharmaceutical products are formulations whose performance depends on their nanoscale structure. We automate the analysis of small-angle scattering data to recover nanoparticle shape and structure, and contribute to active learning for phase mapping."
           theme: predictions
     - id: physics

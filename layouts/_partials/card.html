@@ -1,6 +1,10 @@
 {{/* One project card in one folder. Context: dict "lens" (the grouping id), "p" (a project from data/projects.yaml) and
      "papers" (its papers from data/papers.yaml that belong in this folder). */}}
-{{ $p := .p }}{{ $papers := .papers }}
+{{ $p := .p }}
+{{/* Our own papers first, then papers led by collaborators (contributed: true); each group stays newest first. */}}
+{{ $own := slice }}{{ $contrib := slice }}
+{{ range .papers }}{{ if .contributed }}{{ $contrib = $contrib | append . }}{{ else }}{{ $own = $own | append . }}{{ end }}{{ end }}
+{{ $papers := $own | append $contrib }}
 {{/* Figure: the card's own, if it sets one, else the first of its papers that has one. */}}
 {{ $fig := false }}{{ if $p.image }}{{ $fig = $p }}{{ else }}{{ range first 1 (where $papers "image" "!=" nil) }}{{ $fig = . }}{{ end }}{{ end }}
 {{ $src := slice }}{{ range $papers }}{{ $src = $src | append (.source | default slice) }}{{ end }}
@@ -43,11 +47,12 @@
     <div class="card-body">
       <p class="card-summary">{{ $p.summary | markdownify }}</p>
       {{ with $fig }}{{ with .image_credit }}<p class="card-credit">{{ . }}</p>{{ end }}{{ end }}
-      {{ with $papers }}
+      {{ range $i, $group := slice $own $contrib }}{{ with $group }}
+      {{ if eq $i 1 }}<p class="card-papers-label">{{ if $own }}Also contributed to:{{ else }}Contributed to:{{ end }}</p>{{ end }}
       <ul class="card-papers">
         {{ range . }}<li>{{ if .url }}<a href="{{ if strings.HasPrefix .url "http" }}{{ .url }}{{ else }}{{ .url | relURL }}{{ end }}">{{ .label | markdownify }}</a>{{ else }}{{ .label | markdownify }}{{ end }}{{ if .code }} <a class="button button-sm button-code" href="{{ .code }}">{{ .code_label | default "Code" }}</a>{{ end }}{{ with .note }}<span class="paper-note">{{ . }}</span>{{ end }}</li>{{ end }}
       </ul>
-      {{ end }}
+      {{ end }}{{ end }}
       {{ with $p.related }}<p class="card-related">{{ $p.related_label | default "Related" }}: {{ range $i, $r := . }}{{ if $i }} · {{ end }}<a href="{{ $r.url | relURL }}">{{ $r.label }}</a>{{ end }}</p>{{ end }}
       {{ with $p.code }}<p class="card-code"><a class="button button-sm" href="{{ . }}">{{ $p.code_label | default "Code" }}</a></p>{{ end }}
     </div>

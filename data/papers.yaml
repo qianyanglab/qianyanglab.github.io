@@ -13,9 +13,12 @@
 #   code            optional GitHub URL; adds a Code button next to the paper
 #   code_label      optional text for that button instead of "Code", e.g. "Data"
 #   note            optional short line under the paper
+#   contributed     true for a paper led by collaborators that we contributed to; the card lists these
+#                   after our own papers, under "Also contributed to:" (or "Contributed to:" when
+#                   the card has none of our own)
 #   idea            folders under "Three Key Ideas", given as card ids from data/lenses.yaml:
 #                   sys-reduction, sys-gnn (systems); pred-hierarchical, pred-change (predictions);
-#                   know-extrapolation, know-uq (knowing when it works); [] = not shown there
+#                   know-extrapolation (knowing when it works); [] = not shown there
 #   domain          folders under "Applications": characterization and catalysis (project cards), plus the
 #                   card ids from data/lenses.yaml: sdl-structure-property, sdl-inverse-analysis,
 #                   sdl-active-learning (self-driving labs); energy-eutectic, energy-battery, energy-zintl
@@ -59,21 +62,10 @@
   image: img/projects/kmc.png
   image_credit: "Figure: Clark et al., ACS Central Science (2021), adapted from Chen et al., J. Phys. Chem. A (2019)"
 - project: kmc
-  label: "Clark et al., *ACS Cent. Sci.* (2021)"
-  year: 2021
-  url: "https://doi.org/10.1021/acscentsci.1c00685"
-  note: "Review: traversing scale in complex many-body systems."
-  image: img/projects/kmc.png
-  image_credit: "Figure: Clark et al., ACS Central Science (2021), adapted from Chen et al., J. Phys. Chem. A (2019)"
-  idea: [sys-reduction]
-  domain: []
-  method: [model-reduction]
-  source: []
-- project: kmc
   label: "Chen et al., *J. Phys. Chem. A* (2019)"
   year: 2019
   url: "https://doi.org/10.1021/acs.jpca.8b09947"
-  idea: [sys-reduction]
+  idea: [sys-reduction, know-extrapolation]
   domain: [catalysis]
   method: [model-reduction]
   source: [simulation]
@@ -126,6 +118,7 @@
 - label: "Sendek et al., *Energy Environ. Sci.* (2016)"
   year: 2016
   url: "https://doi.org/10.1039/C6EE02697D"
+  contributed: true
   idea: [know-extrapolation]
   domain: [energy-battery, sdl-structure-property]
   method: []
@@ -136,6 +129,7 @@
 - label: "Parida et al., *J. Mater. Sci.* (2023)"
   year: 2023
   url: "https://doi.org/10.1007/s10853-023-09215-7"
+  contributed: true
   idea: []
   domain: [energy-battery, sdl-structure-property]
   method: []
@@ -143,6 +137,7 @@
 - label: "Chaliha et al., *J. Mater. Chem. A* (2025)"
   year: 2025
   url: "https://doi.org/10.1039/D5TA06210A"
+  contributed: true
   code: "https://github.com/prashungorai/papers/tree/main/2025/zintl-search-ubem"
   code_label: "Data"
   idea: [sys-gnn]
@@ -169,7 +164,7 @@
   label: "Pardakhti et al., *IEEE ICMLA* (2021)"
   year: 2021
   url: "https://doi.org/10.1109/ICMLA52953.2021.00263"
-  idea: [know-extrapolation]
+  idea: []
   domain: [sdl-active-learning]
   method: [active-learning]
   source: [simulation, experiment]
@@ -187,6 +182,7 @@
   label: "Vaddi et al., *AI4Mat-NeurIPS Workshop* (2026)"
   year: 2026
   url: "https://neurips.cc/virtual/2026/workshop/137487"
+  contributed: true
   idea: []
   domain: [sdl-active-learning, sdl-structure-property, bio-structure]
   method: [active-learning]
@@ -197,6 +193,7 @@
   label: "Sainju et al., *Sci. Rep.* (2022)"
   year: 2022
   url: "https://doi.org/10.1038/s41598-022-19697-1"
+  contributed: true
   idea: []
   domain: [characterization, sdl-inverse-analysis]
   method: [vision]
@@ -242,7 +239,7 @@
 - label: "Khanghah et al., *J. Mech. Des.* (2025)"
   year: 2025
   url: "https://doi.org/10.1115/1.4070585"
-  note: "A conference version won the Best Paper Award at ASME IDETC/CIE 2025."
+  contributed: true
   idea: []
   domain: [mfg-3d-printing]
   method: []
@@ -250,6 +247,7 @@
 - label: "Khanghah et al., *SSRN* (2026)"
   year: 2026
   url: "https://ssrn.com/abstract=6458658"
+  contributed: true
   idea: []
   domain: [mfg-3d-printing]
   method: []
@@ -260,14 +258,16 @@
   label: "Villalon et al., *J. Comput. Phys.* (2024)"
   year: 2024
   url: "https://doi.org/10.1016/j.jcp.2024.113141"
-  idea: [sys-reduction, know-uq]
+  contributed: true
+  idea: [sys-reduction, know-extrapolation]
   domain: [phys-dynamics, catalysis]
   method: [model-reduction]
   source: [simulation]
 - label: "Krakovsky et al., *Los Alamos National Laboratory Report* (2023)"
   year: 2023
   url: "https://www.researchgate.net/profile/Daniel_Rehn2/publication/376888454_Uncertainty_quantification_for_equations_of_state_copper_as_an_example/links/658db1d03c472d2e8e954c47/Uncertainty-quantification-for-equations-of-state-copper-as-an-example.pdf"
-  idea: [know-uq]
+  contributed: true
+  idea: [know-extrapolation]
   domain: [phys-conservation]
   method: []
   source: [simulation, experiment]

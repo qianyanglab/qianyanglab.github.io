@@ -44,11 +44,11 @@
       url: "/teaching/#sd-light-scattering-automation"
 
 - id: active-learning
-  title: Model selection and representation for active learning
-  summary: "Builds models from small labeling budgets by choosing each new experiment where it is most informative. We study how to choose model hyperparameters for active learning and how to frame it under strong label imbalance, and contribute to active learning with complex inputs."
+  title: Active learning for limited experimental budgets
+  summary: "We train models from small labeling budgets by choosing each new experiment where it is most informative. We study how to choose model hyperparameters for active learning and how to frame it under strong label imbalance."
   theme: predictions
 
 - id: vision
   title: Computer vision for scientific images and videos
-  summary: "Segments and tracks difficult features in scientific images and videos with small labeled datasets. Applications include defects in inkjet-printed parts, carbon gasification kinetics from operando electron microscopy, and biomedical images."
+  summary: "Segments difficult features in scientific images and videos with small labeled datasets. Applications include defects in inkjet-printed parts, carbon gasification kinetics from operando electron microscopy, and biomedical images."
   theme: predictions
